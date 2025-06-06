@@ -2,6 +2,8 @@
 
 Tool for filtering and labeling images in a handwritten text dataset.
 
+![screen](./docs/screen.jpg)
+
 ## Features
 
 - Web-based UI accessible via browser
