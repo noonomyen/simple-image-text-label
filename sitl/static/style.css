@@ -1,0 +1,181 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    display: flex;
+    height: 100vh;
+}
+
+.layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar {
+    width: 260px;
+    background-color: #1e1e1e;
+    padding: 1.5rem;
+    border-right: 1px solid #2a2a2a;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sidebar h1 {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin: 0;
+}
+
+.workspace-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #90caf9;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: #cfd8dc;
+}
+
+.meta {
+    font-size: 1rem;
+    color: #b0bec5;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-top: auto;
+}
+
+.meta div strong {
+    color: #90caf9;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 100%;
+}
+
+.controls {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.controls button {
+    flex: 1 1 120px;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #2e2e2e;
+    color: #e0e0e0;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+    user-select: none;
+}
+
+.controls button:focus {
+    outline: none;
+    box-shadow: 0 0 5px #90caf9;
+}
+
+.controls button:hover {
+    background-color: #3f3f3f;
+}
+
+.controls button.green {
+    background-color: #388e3c;
+}
+
+.controls button.green:hover {
+    background-color: #4caf50;
+}
+
+.controls button.red {
+    background-color: #d32f2f;
+}
+
+.controls button.red:hover {
+    background-color: #ef5350;
+}
+
+.controls button.yellow {
+    background-color: #fbc02d;
+    color: #212121;
+}
+
+.controls button.yellow:hover {
+    background-color: #fff176;
+}
+
+.label-textarea {
+    width: 100%;
+    max-width: 100%;
+    padding: 1.2rem 1rem;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: #eee;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    resize: vertical;
+    min-height: 180px;
+    overflow-x: hidden;
+    transition: border-color 0.2s ease;
+    margin: 1rem 0;
+}
+
+.label-textarea:focus {
+    outline: none;
+    border-color: #90caf9;
+    box-shadow: 0 0 5px #90caf9aa;
+}
+
+.image-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.image-item {
+    background-color: #1f1f1f;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.image-item p {
+    margin: 0 0 0.75rem 0;
+    font-size: 1rem;
+    color: #b0bec5;
+    font-weight: 600;
+}
+
+.image-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    user-select: none;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Simple Image Text Label (SITL)</title>
+        <link rel="stylesheet" href="/static/style.css" />
+    </head>
+    <body>
+        <div class="layout">
+            <aside class="sidebar">
+                <h1>
+                    Workspace:<br /><span class="workspace-name">{{ name }}</span>
+                </h1>
+                <section class="stats">
+                    <div>Number of images: {{ stats["number"] }}</div>
+                    <div>In queue: {{ stats["queue"] }}</div>
+                    <div>Passed: {{ stats["pass_"] }}</div>
+                    <div>Dropped: {{ stats["drop"] }}</div>
+                    <div>Needs fixing: {{ stats["fix"] }}</div>
+                </section>
+                <section class="meta">
+                    <div><strong>ID:</strong> {{ id }}</div>
+                    <div><strong>Status:</strong> {{ status }}</div>
+                    <div><strong>File:</strong> {{ file }}</div>
+                    <div><strong>Size:</strong> {{ size }}</div>
+                </section>
+            </aside>
+
+            <main class="main-content">
+                <form method="post">
+                    <input type="hidden" name="id" value="{{ id }}" />
+                    <section class="controls">
+                        <button formaction="/save" class="green" type="save">SAVE</button>
+                        <button formaction="/prev" type="submit">PREV</button>
+                        <button formaction="/next" type="submit">NEXT</button>
+                        <button formaction="/pass" class="green" type="submit">PASS</button>
+                        <button formaction="/drop" class="red" type="submit">DROP</button>
+                        <button formaction="/fix" class="yellow" type="submit">FIX</button>
+                    </section>
+
+                    <textarea name="text" class="label-textarea">{{ text }}</textarea>
+
+                    <section class="image-box">
+                        {% for name, image in images %}
+                        <div class="image-item">
+                            <p>{{ name }}</p>
+                            <img src="data:image/png;base64,{{ image }}" alt="{{ name }}" />
+                        </div>
+                        {% endfor %}
+                    </section>
+                </form>
+            </main>
+        </div>
+    </body>
+</html>
