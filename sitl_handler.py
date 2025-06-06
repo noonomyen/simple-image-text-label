@@ -11,8 +11,10 @@ class Handler(SITLHandler):
     def __init__(self):
         self.name = "Demo"
         self.dir = "./data"
-        self.df = read_csv(path.join(self.dir, "labels.csv"))
-        self.df.rename(columns={"filename": "file", "text": "text"}, inplace=True)
+        self.df = read_csv(
+            filepath_or_buffer=path.join(self.dir, "labels.csv"),
+            dtype={"file": str, "text": str, "status": str}
+        )
 
         if "status" not in self.df.columns:
             self.df["status"] = ImageStatus.QUEUE.name
@@ -61,9 +63,9 @@ class Handler(SITLHandler):
         return Stats(
             number=len(self.df),
             queue=(self.df["status"] == ImageStatus.QUEUE.name).sum(),
-            pass_=(self.df["status"] == ImageStatus.PASS.name).sum(),
-            drop=(self.df["status"] == ImageStatus.DROP.name).sum(),
-            fix=(self.df["status"] == ImageStatus.FIX.name).sum()
+            passed=(self.df["status"] == ImageStatus.PASS.name).sum(),
+            dropped=(self.df["status"] == ImageStatus.DROP.name).sum(),
+            fixing=(self.df["status"] == ImageStatus.FIX.name).sum()
         )
 
     def save(self) -> bool:
@@ -74,3 +76,13 @@ class Handler(SITLHandler):
             return False
 
 handler = Handler()
+
+if __name__ == "__main__":
+    print(f"Workspace: {handler.name}")
+    print(f"Working directory: {handler.dir}")
+    print(f"Number of items: {len(handler)}")
+    stats = handler.stats()
+    print(f"Number of items in queue: {stats['queue']}")
+    print(f"Number of items passed: {stats['passed']}")
+    print(f"Number of items dropped: {stats['dropped']}")
+    print(f"Number of items fixing: {stats['fixing']}")
