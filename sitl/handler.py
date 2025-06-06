@@ -11,6 +11,7 @@ class ImageStatus(Enum):
         DROP (int): Image has been dropped or rejected.
         FIX (int): Image requires fixing or further action.
     """
+
     QUEUE = 0
     PASS = 1
     DROP = 2
@@ -28,6 +29,7 @@ class Item(NamedTuple):
         size (str): Size descriptor of the item or image.
         status (ImageStatus): Current status of the image.
     """
+
     id: int
     text: Optional[str]
     images: list[tuple[str, bytes]]
@@ -46,6 +48,7 @@ class Stats(TypedDict):
         dropped (int): Number of items that have been dropped.
         fixing (int): Number of items that require fixing.
     """
+
     number: int
     queue: int
     passed: int
